@@ -19,7 +19,7 @@ android {
     }
 
     buildTypes.each {
-        it.buildConfigField 'String', 'MOVIE_API_KEY', '"af823cd5d1bf21522fe22ac223f8f288"'
+        it.buildConfigField 'String', 'MOVIE_API_KEY', '"YOUR_API_KEY"'
         it.buildConfigField 'String', 'CATEGORY_MOST_POPULAR', '"popular"'
         it.buildConfigField 'String', 'CATEGORY_HIGHEST_RATED', '"top_rated"'
         it.buildConfigField 'String', 'CATEGORY_NOW_PLAYING', '"now_playing"'
