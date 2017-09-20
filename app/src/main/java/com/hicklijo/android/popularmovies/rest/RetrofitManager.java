@@ -2,6 +2,7 @@ package com.hicklijo.android.popularmovies.rest;
 
 import com.hicklijo.android.popularmovies.data.Constants;
 import com.hicklijo.android.popularmovies.rest.Service.IMovieService;
+import com.hicklijo.android.popularmovies.rest.model.MovieDetail;
 import com.hicklijo.android.popularmovies.rest.model.MoviesInfo;
 
 import okhttp3.OkHttpClient;
@@ -44,5 +45,10 @@ public class RetrofitManager {
     public void getMoviesInfo(String categories, int page, String apiKey, Callback<MoviesInfo> callback){
         Call<MoviesInfo> moviesInfoCall = iMovieService.getMoviesInfo(categories, page, apiKey);
         moviesInfoCall.enqueue(callback);
+    }
+
+    public void getMovieDetail(String movieId, String apiKey, Callback<MovieDetail> callback){
+        Call<MovieDetail> movieDetailInfoCall = iMovieService.getMovieDetails(movieId, apiKey);
+        movieDetailInfoCall.enqueue(callback);
     }
 }
