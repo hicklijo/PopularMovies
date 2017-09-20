@@ -1,60 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="8dp">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.hicklijo.android.popularmovies.MovieDetailActivity">
 
-    <TextView
-        android:id="@+id/movie_title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:textAlignment="viewStart"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textSize="36sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:fitsSystemWindows="true"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_width="match_parent"
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-    <ImageView
-        android:id="@+id/movie_poster_image_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/movie_title_text"
-        app:srcCompat="@android:color/darker_gray" />
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            android:fitsSystemWindows="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="?attr/colorPrimary">
+            <ImageView
+                android:id="@+id/movie_detail_backdrop"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/movie_detail_backdrop_description" />
 
-    <TextView
-        android:id="@+id/movie_year_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="8dp"
-        android:textSize="22sp"
-        app:layout_constraintLeft_toRightOf="@+id/movie_poster_image_view"
-        app:layout_constraintTop_toBottomOf="@+id/movie_title_text" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_height="?attr/actionBarSize"
+                android:layout_width="match_parent"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/AppTheme.PopupOverlay"/>
 
-    <TextView
-        android:id="@+id/movie_runtime_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="22sp"
-        app:layout_constraintTop_toBottomOf="@+id/movie_year_text"
-        app:layout_constraintLeft_toRightOf="@+id/movie_poster_image_view"
-        android:layout_marginLeft="24dp" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
 
-    <TextView
-        android:id="@+id/movie_rating_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="8dp"
-        android:textSize="22sp"
-        app:layout_constraintLeft_toRightOf="@+id/movie_poster_image_view"
-        app:layout_constraintTop_toBottomOf="@+id/movie_runtime_text" />
-
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/content_movie_detail"/>
+</android.support.design.widget.CoordinatorLayout>

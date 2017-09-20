@@ -20,6 +20,10 @@ android {
 
     buildTypes.each {
         it.buildConfigField 'String', 'MOVIE_API_KEY', '"af823cd5d1bf21522fe22ac223f8f288"'
+        it.buildConfigField 'String', 'CATEGORY_MOST_POPULAR', '"popular"'
+        it.buildConfigField 'String', 'CATEGORY_HIGHEST_RATED', '"top_rated"'
+        it.buildConfigField 'String', 'CATEGORY_NOW_PLAYING', '"now_playing"'
+        it.buildConfigField 'String', 'CATEGORY_UPCOMING', '"upcoming"'
     }
 }
 
@@ -27,6 +31,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:support-compat:26.1.0'
     compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
     compile 'com.android.support:recyclerview-v7:26.1.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'

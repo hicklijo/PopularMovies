@@ -17,10 +17,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by john.hicklin on 9/20/2017.
- */
-
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapterViewHolder>{
     private List<Movie> mMovieList;
     private final iMovieAdapterOnClickHandler mClickHandler;
@@ -33,9 +29,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
         mClickHandler = clickHandler;
     }
 
-    public class MovieAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public ImageView imageView;
-        public MovieAdapterViewHolder(View itemView) {
+    class MovieAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        ImageView imageView;
+        MovieAdapterViewHolder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
             itemView.setOnClickListener(this);
@@ -76,7 +72,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieAdapter
             this.mMovieList = new ArrayList<>();
             this.mMovieList.addAll(movieList);
         }
+        notifyDataSetChanged();
+    }
 
+    public void resetMovieList(){
+        this.mMovieList = null;
         notifyDataSetChanged();
     }
 }

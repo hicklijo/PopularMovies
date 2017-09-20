@@ -1,6 +1,11 @@
 package com.hicklijo.android.popularmovies.rest.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -95,7 +100,7 @@ public class MovieDetail implements Parcelable
             MovieDetail instance = new MovieDetail();
             instance.adult = ((Boolean) in.readValue((Boolean.class.getClassLoader())));
             instance.backdropPath = ((String) in.readValue((String.class.getClassLoader())));
-            instance.belongsToCollection = ((Object) in.readValue((Object.class.getClassLoader())));
+            instance.belongsToCollection = in.readValue((Object.class.getClassLoader()));
             instance.budget = ((Integer) in.readValue((Integer.class.getClassLoader())));
             in.readList(instance.genres,
                     (com.hicklijo.android.popularmovies.rest.model.Genre.class.getClassLoader()));
