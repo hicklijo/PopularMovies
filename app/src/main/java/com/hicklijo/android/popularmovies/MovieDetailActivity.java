@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hicklijo.android.popularmovies.rest.RetrofitManager;
 import com.hicklijo.android.popularmovies.rest.model.MovieDetail;
@@ -89,6 +90,8 @@ public class MovieDetailActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<MovieDetail> call, Throwable t) {
+                    String errorMessage = "Failed to retrieve data from API.  Please check your internet connection";
+                    showToast(errorMessage);
                     Log.d("MovieDetail :: ", "Failure");
                     mIsLoading = false;
                 }
@@ -115,11 +118,11 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         mMovieTitle.setText(mSelectedMovie.getOriginalTitle());
 
-        mMovieRunTime.setText(String.format(getString(R.string.movie_detail_run_time), mSelectedMovie.getRuntime()));
+        mMovieRunTime.setText(String.format(getString(R.string.movie_detail_run_time), mSelectedMovie.getRuntime().toString()));
 
         mMovieRunTime.setText(String.format(getString(R.string.movie_detail_release_date),mSelectedMovie.getReleaseDate()));
 
-        mMovieRating.setText(String.format(getString(R.string.movie_detail_vote_average), mSelectedMovie.getVoteAverage()));
+        mMovieRating.setText(String.format(getString(R.string.movie_detail_vote_average), mSelectedMovie.getVoteAverage().toString()));
         mMovieTagline.setText(mSelectedMovie.getTagline());
         mMovieDescription.setText(mSelectedMovie.getOverview());
         mToolBarLayout.setTitle(mSelectedMovie.getTitle() + " - (" + calendar.get(Calendar.YEAR)+")");
@@ -134,5 +137,10 @@ public class MovieDetailActivity extends AppCompatActivity {
                 .into(mMovieDetailBackdropImageView);
 
         mIsLoading = false;
+    }
+
+    private void showToast(String message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+
     }
 }

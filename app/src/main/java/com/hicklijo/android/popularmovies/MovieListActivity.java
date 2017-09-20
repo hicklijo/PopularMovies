@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.hicklijo.android.popularmovies.Interface.iMovieAdapterOnClickHandler;
 import com.hicklijo.android.popularmovies.adapter.MovieAdapter;
@@ -145,9 +146,16 @@ public class MovieListActivity extends AppCompatActivity implements iMovieAdapte
 
             @Override
             public void onFailure(Call<MoviesInfo> call, Throwable t) {
+                String errorMessage = "Failed to retrieve data from API.  Please check your internet connection";
+                showToast(errorMessage);
                 Log.d("MoviesInfo :: ", "Failure");
                 isLoading = false;
             }
         });
+    }
+
+    private void showToast(String message){
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+
     }
 }
